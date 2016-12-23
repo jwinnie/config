@@ -59,22 +59,13 @@ COMPLETION_WAITING_DOTS="true"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export EDITOR='mvim'
 
-# *** ALIASES ***
-alias gs="git status"
-alias gb="git checkout $1 2>/dev/null || git checkout -b $1"
+# Aliases
 alias ls="git status; printf '------------------------ \n'; ls -a"
 alias x="mkdir -pv $1 && cd $1"
 
-# *** STYLING OF COMPLETION ***
+# Autocomplete
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format "$fg[yellow]%B---------------------%b"
@@ -85,7 +76,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select
 autoload -U compinit && compinit
 
-# *** OPTIONS ***
+# Options
 unsetopt LIST_AMBIGUOUS
 setopt AUTO_LIST
 setopt COMPLETE_ALIASES
@@ -97,19 +88,12 @@ setopt AUTO_CD
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-# **** PLUGINS ***
+# Sources
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
 source ~/.zsh/gpush/gpush.zsh
-source ~/.zsh/battery/battery.plugin.zsh
 
-PROMPT='%n: %U%~%u $(git_super_status) %(!.%F{red}su>%f.)> '
 
-wd() {
-  . ~/bin/wd/wd.sh
-}
+PROMPT='%n:%U%~%u$(git_super_status)%(!.%F{red}su>%f.)> '
 
-# **** LOGIN COMMANDS ****
-printf "ZSH Interactive Shell ($(sw_vers -productName) $(sw_vers -productVersion))\n"
-printf "------------------------------------\n"
