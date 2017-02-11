@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$1" = "up" ]; then
+	echo "volume: up"
+	amixer set Master 5%+ > /dev/null
+	amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show
+
+elif [ "$1" = "down" ]; then
+	echo "volume: down"
+	amixer set Master 5%- > /dev/null
+	amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show
+
+elif [ "$1" = "mute" ]; then
+	echo "volume: toggle mute"
+	amixer set Master toggle
+	notify-send "Toggle Mute"
+
+else
+	echo
+	echo "volume: change volume easily"
+	echo "volume up - down by 5%"
+	echo "volume down - up by 5%" 
+	echo "volume mute - toggle mute"
+	echo
+fi
