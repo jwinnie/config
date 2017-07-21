@@ -11,6 +11,9 @@ fi
 ADOTDIR=${XDG_CONFIG_HOME}/zsh/antigen
 source ${XDG_CONFIG_HOME}/zsh/antigen.zsh
 
+# Remove caches (they are usually broken for me)
+antigen reset
+
 # Powerline theme (github.com/bhilburn/powerlevel9k)
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 POWERLEVEL9K_MODE="awesome-patched"
@@ -31,8 +34,6 @@ antigen bundle git
 antigen bundle heroku
 antigen bundle python
 antigen bundle pylint
-
-antigen apply
 
 # Options
 HYPHEN_INSENSITIVE="true"
@@ -58,3 +59,5 @@ autoload -U compinit && compinit
 
 # Aliases
 alias ls="ls -AF --group-directories-first --color=auto"
+
+antigen apply
