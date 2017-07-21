@@ -11,19 +11,9 @@ fi
 ADOTDIR=${XDG_CONFIG_HOME}/zsh/antigen
 source ${XDG_CONFIG_HOME}/zsh/antigen.zsh
 
-# Nerd Fonts (github.com/ryanoasis/nerd-fonts)
-if ! $(fc-list | grep -q NerdFont); then
-    FONT_DIR=${HOME}/.local/share/fonts/NerdFont
-    printf "Installing NerdFonts to ${FONT_DIR}..."
-    mkdir -p ${FONT_DIR}
-    curl https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Inconsolata/complete/Inconsolata%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf > ${FONT_DIR} && fc-cache -vf ${FONT_DIR}
-    printf "Setting Pantheon Terminal font to NerdFont..."
-    gsettings set org.pantheon.terminal.settings font "InconsolataForPowerline Nerd Font 15" 
-fi
-
 # Powerline theme (github.com/bhilburn/powerlevel9k)
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_MODE="awesome-patched"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs dir_writable)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 antigen theme bhilburn/powerlevel9k powerlevel9k
